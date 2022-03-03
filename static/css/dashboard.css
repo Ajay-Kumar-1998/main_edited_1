@@ -7,3 +7,22 @@ body {
   background-image: linear-gradient(#fcdfffff, #dffbffff, #dffbffff);
   height: 100vh;
 }
+
+#logo {
+  background-color: rgb(231, 0, 0);
+}
+#search_bar {
+  background-color: rgb(0, 231, 69);
+}
+
+#account {
+  background-color: rgb(15, 0, 231);
+}
+
+#features {
+  background-color: rgb(231, 0, 173);
+}
+
+#deck_list {
+  background-color: rgb(231, 216, 0);
+}
