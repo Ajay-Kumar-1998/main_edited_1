@@ -58,7 +58,7 @@ def dashboard():
 @views.route('/review/<string:deck>', methods = ['GET', 'POST'])
 @login_required
 def review(deck):
-    data=requests.get(f'http://127.0.0.1:5000/api/{current_user.username}/{deck}/card') 
+    data=requests.get(f'http://127.0.0.1:5000/api/{current_user.username}/{deck}/card_review') 
     if data:
         return render_template('review.html', question = data.json()['front'], answer = data.json()['back'], deck=data.json()['deck'], card_id=data.json()['card_id'], data=True)
     else:

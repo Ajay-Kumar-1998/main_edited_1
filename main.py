@@ -20,9 +20,9 @@ def create_app():
 
 #-----------------adding api resources----------------
     from application.api import UserAPI, DeckAPI, CardAPI, DeckExportAPI
-    api.add_resource(UserAPI, '/api/user', '/api/user/<string:username>')   
+    api.add_resource(UserAPI, '/api/user_registration')   
     api.add_resource(DeckAPI, '/api/deck/<string:username>')
-    api.add_resource(CardAPI, '/api/<string:username>/<string:deck>/card', '/api/card/<string:card_id>','/api/<string:deck>')
+    api.add_resource(CardAPI, '/api/<string:username>/<string:deck>/card_review','/api/<string:deck>/card_post')
     api.add_resource(DeckExportAPI, "/api/export/<string:deck_name>")
 
 #------------- creating view blue prints--------------

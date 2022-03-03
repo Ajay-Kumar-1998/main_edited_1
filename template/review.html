@@ -49,7 +49,11 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form class="form-control" action="/api/{{ deck }}" method="POST">
+              <form
+                class="form-control"
+                action="/api/{{ deck }}/card_post"
+                method="POST"
+              >
                 <p>
                   <input type="text" placeholder=" Card front" name="front" />
                 </p>
