@@ -24,19 +24,42 @@
   <body>
     <!-- =============== nav bar================ -->
     <div class="row">
-      <div class="col-md-3" id="logo">Logo</div>
-      <div class="col-md-6" id="search_bar">search bar</div>
-      <div class="col-md-3" id="account">account</div>
+      <div class="col-md-3" id="logo">
+        <!-- ================== logo ============== -->
+        <img id="logo_img" src="/static/images/logo.png" />
+      </div>
+
+      <div class="col-md-6" id="search_bar">
+        <!-- ============== search box ============ -->
+        <div class="container" id="search_box">
+          <p>Search</p>
+        </div>
+      </div>
+      <div class="col-md-3" id="account">
+        <div class="row">
+          <div class="col-md-6" id="status_box"></div>
+          <div class="col-md-6" id="account_box"></div>
+        </div>
+      </div>
     </div>
+    <center>
+      <hr />
+    </center>
     <!-- ============== main section ============== -->
     <div class="row">
       <div class="col-md-3" id="features">
-        <div class="row" id="features_heading">features</div>
-        <div class="row"></div>
+        <!-- ================ features box ====== -->
+        <div class="container" id="features_box">
+          <div id="features_title">
+            <center>
+              <p>FEATURES</p>
+            </center>
+          </div>
+        </div>
       </div>
+      <!-- ================ deck box  ============= -->
       <div class="col-md-9" id="deck_list">
-        <div class="row" id="deck_title">your decks</div>
-        <div class="row" id="decks">2</div>
+        <div class="container" id="deck_box"></div>
       </div>
     </div>
   </body>
