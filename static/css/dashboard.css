@@ -10,9 +10,12 @@ body {
 }
 hr {
   width: 1500px;
-S
 }
 
+a {
+  text-decoration: none !important;
+  color: rgb(38, 0, 70);
+}
 #logo {
   /* background-color: rgba(0, 4, 231, 0.2); */
   height: 100px;
@@ -92,7 +95,7 @@ S
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.199);
 }
 
-#status_box{
+#status_box {
   width: 200px;
   height: 50px;
   margin-top: 40px;
@@ -101,7 +104,7 @@ S
   border-radius: 10px;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.199);
 }
-#account_box{
+#account_box {
   width: 100px;
   height: 50px;
   margin-top: 40px;
@@ -110,16 +113,35 @@ S
   border-radius: 10px;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.199);
 }
-#features_title{
+#features_title {
   border-bottom: 1px solid rgba(53, 53, 53, 0.212);
   margin-left: 5px;
   margin-right: 5px;
   padding-top: 7px;
   height: 50px;
 }
-#features_title p{
+#features_title p {
   font-size: 20px;
   font-weight: 100;
   margin-top: 5px;
+}
+#features_cont {
+  padding-left: 20px;
+  width: 240px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
+#features_cont_acc i {
+  /* margin-right: 1px; */
+  width: 40px;
+  color: rgb(78, 0, 141);
+}
+#features_cont i {
+  margin-right: 22px;
+  color: rgb(78, 0, 141);
+}
+#deck_add_btn {
+  margin-top: 10px;
 }

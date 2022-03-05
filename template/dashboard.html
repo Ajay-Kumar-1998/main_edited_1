@@ -80,8 +80,17 @@
       <h2>{{deck["deck_name"]}}</h2>
       <p><a href="/review/{{deck['deck_name']}}">Review Deck </a></p>
       <p>
-        <a href="/{{user}}/deck/{{deck['deck_name']}}/delete">Delete deck </a>
+        <!-- <a href="/{{user}}/deck/{{deck['deck_name']}}/delete">Delete deck </a> -->
+        <!-- <a href="/api/delete/{{user}}/{{deck['deck_name']}}">Delete deck </a> -->
+        
+        <form action="/api/deck_delete_api/{{user}}/{{deck['deck_name']}}" method="GET"><button type="submit">delete</button></form>
       </p>
+
+      <!-- =================== EDITING DECK  ========================== -->
+      <form action="/api/deck_edit_api/{{user}}/{{deck['deck_name']}}" method="POST">
+        <input type="text" name="deck_name">
+        <button type="submit">edit</button>
+      </form>
       <p>
         <a href="/api/export/{{deck['deck_name']}}">Export Deck</a>
         <a href="static/CSV/deck.csv" download="w3logo">Download</a>

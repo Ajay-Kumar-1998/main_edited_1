@@ -13,6 +13,7 @@ import imp
 import pandas as pd
 import sqlite3
 from unittest import result
+import requests
 
 
 
@@ -58,13 +59,14 @@ class DeckAPI(Resource):
 
     #________________used in dashboard for showing decks of user___________________   
     def get(self, username):
+        print("-------------------------------------dddddddddddddddddddddddd---------")
         decks = Deck.query.filter_by(user=username)
 
         r=[]
         for deck in decks:
             r.append({'deck_name':deck.deck_name, 'score':deck.score, 'last_rev':str(deck.last_rev)})         
         return r
-        
+    
 #_______________________used for adding decks in dashboard__________________
     def post(self, username):
         print("entered post----------------------")
@@ -80,6 +82,33 @@ class DeckAPI(Resource):
         db.session.add(deck_to_add)
         db.session.commit()
         return redirect('/dashboard')
+
+# ================================ DELETE DECK =====================
+    def delete(self, username,deck_name):
+        print("line 1------------------------")
+        deck_to_delete= Deck.query.filter_by(deck_name=deck_name, user=username).first()
+        print("line 2------------------------")
+        db.session.delete(deck_to_delete)
+        print("line 3------------------------")
+        db.session.commit()
+        print("line 4------------------------")
+        return redirect('/dashboard')
+
+
+# ========================== EDIT DECK ==========================
+
+    def put(self, username, deck_name):
+        args = deck_post_args.parse_args()
+        current_decks = Deck.query.filter_by(user=username, deck_name=deck_name)
+        new_deck_name=args['deck_name']
+        deck_to_edit=Deck(deck_name=new_deck_name, user=username)
+        db.session.add(deck_to_edit)
+        return redirect("/dashboard")
+
+
+
+
+
 
 
 
@@ -137,4 +166,29 @@ class DeckExportAPI(Resource):
         print("line 7-------------------")
         df.to_csv('static/CSV/deck.csv')
         print("line 8--------------------")
+        return redirect("/dashboard")
+
+class DeckDeleteAPI(Resource):
+    def get(self, username, deck_name):
+        print("line 1------------------------")
+        deck_to_delete= Deck.query.filter_by(deck_name=deck_name, user=username).first()
+        print("line 2------------------------")
+        db.session.delete(deck_to_delete)
+        print("line 3------------------------")
+        db.session.commit()
+        print("line 4------------------------")
+        return redirect('/dashboard')
+
+class DeckEditAPI(Resource):
+    def post(self, username, deck_name):
+        
+        args = deck_post_args.parse_args()
+        current_deck = Deck.query.filter_by(user=username, deck_name=deck_name).first()
+        new_deck_name=args['deck_name']
+        # deck_to_edit=Deck(deck_name=new_deck_name, user=username)
+        print(current_deck)
+        print(new_deck_name)
+        current_deck.deck_name=new_deck_name
+        # db.session.add(deck_to_edit)
+        db.session.commit()
         return redirect("/dashboard")
