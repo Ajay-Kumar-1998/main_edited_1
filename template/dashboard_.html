@@ -29,6 +29,9 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <!-- ============ vue =============== -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <title>Dashboard</title>
   </head>
   <body>
@@ -67,7 +70,11 @@
           </div>
           <div id="features_cont_acc">
             <!-- ================== accordition=============== -->
-            <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div
+              id="features"
+              class="accordion accordion-flush"
+              id="accordionFlushExample"
+            >
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
                   <button
@@ -88,24 +95,33 @@
                   data-bs-parent="#accordionFlushExample"
                 >
                   <div class="accordion-body">
-                    <form action="/api/deck/{{user}}" method="POST">
-                      <label for="deck_name" class="form-label"
-                        >Deck name</label
+                    <div>
+                      <!-- <form
+                        id="add_deck"
+                        action="/api/deck/{{user}}"
+                        method="POST"
                       >
-                      <input
-                        type="text"
-                        name="deck_name"
-                        class="form-control"
-                        placeholder="Enter Deck Name"
-                      />
-                      <button
-                        type="submit"
-                        id="deck_add_btn"
-                        class="btn btn-outline-secondary"
-                      >
-                        ADD
-                      </button>
-                    </form>
+                        <label for="deck_name" class="form-label"
+                          >Deck name</label
+                        >
+                        <input
+                          type="text"
+                          name="deck_name"
+                          class="form-control"
+                          placeholder="Enter Deck Name"
+                          v-model="new_deck_name"
+                        />
+                        <button
+                          type="submit"
+                          id="deck_add_btn"
+                          class="btn btn-outline-secondary"
+                          v-on:click="add_deck_func"
+                        >
+                          ADD
+                        </button>
+                      </form> -->
+                      {% raw %}<add_deck user="{{user}}"></add_deck>{% endraw %}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -199,4 +215,5 @@
       </div>
     </div>
   </body>
+  <script type="text/javasccript" src="static/js/dashboard.js"></script>
 </html>
