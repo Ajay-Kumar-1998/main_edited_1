@@ -21,5 +21,5 @@ const add_deck = Vue.component("add_deck", {
 });
 
 var features = new Vue({
-  el: "#features",
+  el: "#app",
 });

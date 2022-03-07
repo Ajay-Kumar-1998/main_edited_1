@@ -30,209 +30,216 @@
       crossorigin="anonymous"
     ></script>
     <!-- ============ vue =============== -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
+    <!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
     <title>Dashboard</title>
   </head>
   <body>
-    <!-- =============== nav bar================ -->
-    <div class="row">
-      <div class="col-md-3" id="logo">
-        <!-- ================== logo ============== -->
-        <img id="logo_img" src="/static/images/logo.png" />
-      </div>
+    <div id="app">
+      <!-- =============== nav bar================ -->
+      <div class="row">
+        <div class="col-md-3" id="logo">
+          <!-- ================== logo ============== -->
+          <img id="logo_img" src="/static/images/logo.png" />
+        </div>
 
-      <div class="col-md-6" id="search_bar">
-        <!-- ============== search box ============ -->
-        <div class="container" id="search_box">
-          <p>Search</p>
-        </div>
-      </div>
-      <div class="col-md-3" id="account">
-        <div class="row">
-          <div class="col-md-6" id="status_box"></div>
-          <div class="col-md-6" id="account_box"></div>
-        </div>
-      </div>
-    </div>
-    <center>
-      <hr />
-    </center>
-    <!-- ============== main section ============== -->
-    <div class="row">
-      <div class="col-md-3" id="features">
-        <!-- ================ features box ====== -->
-        <div class="container" id="features_box">
-          <div id="features_title">
-            <center>
-              <p>FEATURES</p>
-            </center>
+        <div class="col-md-6" id="search_bar">
+          <!-- ============== search box ============ -->
+          <div class="container" id="search_box">
+            <p>Search</p>
           </div>
-          <div id="features " class="features_cont_acc">
-            <!-- ================== accordition=============== -->
-            <div
-              id="features"
-              class="accordion accordion-flush"
-              id="accordionFlushExample"
-            >
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseOne"
-                    aria-expanded="false"
-                    aria-controls="flush-collapseOne"
+        </div>
+        <div class="col-md-3" id="account">
+          <div class="row">
+            <div class="col-md-6" id="status_box"></div>
+            <div class="col-md-6" id="account_box"></div>
+          </div>
+        </div>
+      </div>
+      <center>
+        <hr />
+      </center>
+      <!-- ============== main section ============== -->
+      <div class="row">
+        <div class="col-md-3" id="features">
+          <!-- ================ features box ====== -->
+          <div class="container" id="features_box">
+            <div id="features_title">
+              <center>
+                <p>FEATURES</p>
+              </center>
+            </div>
+            <div id="features " class="features_cont_acc">
+              <!-- ================== accordition=============== -->
+              <div
+                id="features"
+                class="accordion accordion-flush"
+                id="accordionFlushExample"
+              >
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseOne"
+                    >
+                      <i class="bi bi-plus-circle-fill"></i>Add new deck +
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseOne"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample"
                   >
-                    <i class="bi bi-plus-circle-fill"></i>Add new deck +
-                  </button>
-                </h2>
-                <div
-                  id="flush-collapseOne"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="flush-headingOne"
-                  data-bs-parent="#accordionFlushExample"
-                >
-                  <div class="accordion-body">
-                    <div>
-                      <!-- <form
-                        id="add_deck"
-                        action="/api/deck/{{user}}"
-                        method="POST"
-                      >
-                        <label for="deck_name" class="form-label"
-                          >Deck name</label
+                    <div class="accordion-body">
+                      <div>
+                        <form
+                          id="add_deck"
+                          action="/api/deck/{{user}}"
+                          method="POST"
                         >
-                        <input
-                          type="text"
-                          name="deck_name"
-                          class="form-control"
-                          placeholder="Enter Deck Name"
-                          v-model="new_deck_name"
-                        />
-                        <button
-                          type="submit"
-                          id="deck_add_btn"
-                          class="btn btn-outline-secondary"
-                          v-on:click="add_deck_func"
-                        >
-                          ADD
-                        </button>
-                      </form> -->
-                      {% raw %}<add_deck user="{{user}}"></add_deck>{% endraw %}
+                          <label for="deck_name" class="form-label"
+                            >Deck name</label
+                          >
+                          <input
+                            type="text"
+                            name="deck_name"
+                            class="form-control"
+                            placeholder="Enter Deck Name"
+                            v-model="new_deck_name"
+                          />
+                          <button
+                            type="submit"
+                            id="deck_add_btn"
+                            class="btn btn-outline-secondary"
+                            v-on:click="add_deck_func"
+                          >
+                            ADD
+                          </button>
+                        </form>
+                        <!-- {% raw %}<add_deck user="{{user}}"></add_deck>{% endraw -->
+                        <!-- %} -->
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- ============= item 2================= -->
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="flush-collapseTwo"
+                <!-- ============= item 2================= -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseTwo"
+                    >
+                      <i class="bi bi-clipboard2-data"></i>Analatics
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseTwo"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="flush-headingTwo"
+                    data-bs-parent="#accordionFlushExample"
                   >
-                    <i class="bi bi-clipboard2-data"></i>Analatics
-                  </button>
-                </h2>
-                <div
-                  id="flush-collapseTwo"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="flush-headingTwo"
-                  data-bs-parent="#accordionFlushExample"
-                >
-                  ...
+                    ...
+                  </div>
                 </div>
-              </div>
-              <!-- ======================= item 3=========== -->
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
+                <!-- ======================= item 3=========== -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      <i class="bi bi-gem"></i>Upgrade
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseThree"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample"
                   >
-                    <i class="bi bi-gem"></i>Upgrade
-                  </button>
-                </h2>
-                <div
-                  id="collapseThree"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingThree"
-                  data-bs-parent="#accordionExample"
-                >
-                  ...
+                    ...
+                  </div>
                 </div>
-              </div>
-              <!-- =============== item 4================ -->
+                <!-- =============== item 4================ -->
 
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingFour">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFour"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      <i class="bi bi-box-arrow-left"></i>Logout
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseFour"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample"
                   >
-                    <i class="bi bi-box-arrow-left"></i>Logout
-                  </button>
-                </h2>
-                <div
-                  id="collapseFour"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingFour"
-                  data-bs-parent="#accordionExample"
-                >
-                  ...
+                    ...
+                  </div>
                 </div>
               </div>
+              <!-- =============== accordition END ============ -->
             </div>
-            <!-- =============== accordition END ============ -->
           </div>
         </div>
-      </div>
-      <!-- ================ deck box  ============= -->
-      <div class="col-md-9" id="deck_list">
-        <div class="container" id="deck_box">
-          <center>
-            <p>Your Decks</p>
-            <hr />
-          </center>
-          <div class="container" id="main_deck_cont">
-            <div class="row">
-              <div class="col-md-7">
-                <p>Deck name</p>
-              </div>
+        <!-- ================ deck box  ============= -->
+        <div class="col-md-9" id="deck_list">
+          <div class="container" id="deck_box">
+            <center>
+              <p>Your Decks</p>
+              <hr />
+            </center>
+            <div class="container" id="main_deck_cont">
+              <div class="row">
+                <div class="col-md-7">
+                  <p>Deck name</p>
+                </div>
 
-              <div class="col-md-1" id="deck_features_s">
-                <p>50</p>
-              </div>
-              <div class="col-md-1" id="deck_features">
-                <i class="bi bi-arrow-right-circle"></i>
-              </div>
-              <div class="col-md-1" id="deck_features">
-                <i class="bi bi-pencil-square fa-5x"></i>
-              </div>
-              <div class="col-md-1" id="deck_features">
-                <i class="bi bi-download"></i>
-              </div>
-              <div class="col-md-1" id="deck_features">
-                <i class="bi bi-trash"></i>
+                <div class="col-md-1" id="deck_features_s">
+                  <p>50</p>
+                </div>
+                <div class="col-md-1" id="deck_features">
+                  <i class="bi bi-arrow-right-circle"></i>
+                </div>
+                <div class="col-md-1" id="deck_features">
+                  <i class="bi bi-pencil-square fa-5x"></i>
+                </div>
+                <div class="col-md-1" id="deck_features">
+                  <i class="bi bi-download"></i>
+                </div>
+                <div class="col-md-1" id="deck_features">
+                  <i class="bi bi-trash"></i>
+                </div>
+                <!-- {% raw %}<add_deck user="{{user}}"></add_deck>{% endraw %} -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script type="text/javasccript" src="static/js/dashboard.js"></script>
   </body>
-  <script type="text/javasccript" src="static/js/dashboard.js"></script>
 </html>

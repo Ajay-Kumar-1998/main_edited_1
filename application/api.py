@@ -1,8 +1,10 @@
+from inspect import ArgSpec
 from flask.helpers import flash
 from flask.templating import render_template
 from flask_restful import Resource, Api
 from flask_restful import fields, marshal_with
 from flask_restful import reqparse
+from numpy import argsort
 from application.models import User, Deck, Card
 from application.db_init import db
 from flask import current_app as app
@@ -30,6 +32,8 @@ deck_post_args.add_argument('deck_name')
 card_post_args = reqparse.RequestParser()
 card_post_args.add_argument('front')
 card_post_args.add_argument('back')
+card_post_args.add_argument('new_front')
+card_post_args.add_argument('new_back')
 
 
 class UserAPI(Resource):
@@ -107,11 +111,6 @@ class DeckAPI(Resource):
 
 
 
-
-
-
-
-
 #_______________________card apis______________________
 class   CardAPI(Resource):
 
@@ -149,23 +148,23 @@ class   CardAPI(Resource):
 class DeckExportAPI(Resource):
 # ----   /api/export/<string:deck_name>
     def get(sels, deck_name):
-        print("line 1--------------------")
+
         connection=sqlite3.connect("dataBase/final_project.sqlite3")
-        print("line 2--------------------")
+
         cursor=connection.cursor()
-        print("line 3--------------------")
+ 
         query="select * from card where deck= '%s'" % deck_name
-        print("line 4--------------------")
+
         cursor.execute(query)
-        print("line 5--------------------")
+
         result=cursor.fetchall()
-        print("line 6--------------------")
+  
         for it in result:
             print(it)
         df=pd.read_sql_query(query,connection)
-        print("line 7-------------------")
+
         df.to_csv('static/CSV/deck.csv')
-        print("line 8--------------------")
+
         return redirect("/dashboard")
 
 class DeckDeleteAPI(Resource):
@@ -192,3 +191,23 @@ class DeckEditAPI(Resource):
         # db.session.add(deck_to_edit)
         db.session.commit()
         return redirect("/dashboard")
+
+class CardDeleteEditAPI(Resource):
+    def get(self, deck_name,card_id):
+        card_to_delete=Card.query.filter_by(card_id=card_id).first()
+        db.session.delete(card_to_delete)
+        db.session.commit()
+        return redirect(f"/review/{deck_name}")
+    
+    def post(self,deck_name, card_id):
+        args=card_post_args.parse_args()
+        card_to_edit=Card.query.filter_by(card_id=card_id).first()
+        print(card_to_edit)
+        new_card_front=args['new_front']
+        new_card_back=args['new_back']
+        card_to_edit.front=new_card_front
+        db.session.commit()
+        card_to_edit.back=new_card_back
+        db.session.commit()
+        return redirect(f"/review/{deck_name}")
+        

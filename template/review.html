@@ -83,6 +83,15 @@
       <hr />
       <p>{{question}}</p>
       <p>{{answer}}</p>
+      <h3>edit this card</h3>
+      <form action="/api/card_delete_edit/{{deck}}/{{card_id}}" method="POST">
+        <input type="text" name="new_front" placeholder="new front" />
+        <input type="text" name="new_back" placeholder="new back" />
+        <button type="submit">submit</button>
+      </form>
+      <form action="/api/card_delete_edit/{{deck}}/{{card_id}}" method="GET">
+        <button type="submit">delete</button>
+      </form>
       <hr />
       <form action="/review/{{deck}}/{{card_id}}" method="POST" id="autoform">
         <p>
