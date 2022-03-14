@@ -63,7 +63,6 @@ class DeckAPI(Resource):
 
     #________________used in dashboard for showing decks of user___________________   
     def get(self, username):
-        print("-------------------------------------dddddddddddddddddddddddd---------")
         decks = Deck.query.filter_by(user=username)
 
         r=[]
@@ -71,7 +70,7 @@ class DeckAPI(Resource):
             r.append({'deck_name':deck.deck_name, 'score':deck.score, 'last_rev':str(deck.last_rev)})         
         return r
     
-#_______________________used for adding decks in dashboard__________________
+#_______________________used for adding decks in dashboard__  /api/deck/{{user}}  ________________
     def post(self, username):
         print("entered post----------------------")
         args = deck_post_args.parse_args()
@@ -85,7 +84,8 @@ class DeckAPI(Resource):
         deck_to_add= Deck(deck_name=new_deck_name, user=username)
         db.session.add(deck_to_add)
         db.session.commit()
-        return redirect('/dashboard')
+        print("==========================================mmmmm")
+        # return redirect('/dashboard')
 
 # ================================ DELETE DECK =====================
     def delete(self, username,deck_name):

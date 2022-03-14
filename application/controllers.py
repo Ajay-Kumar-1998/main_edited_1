@@ -46,7 +46,7 @@ def register():
     return render_template('register_.html')
 
 
-#_________________________dashboard______________________--
+#_________________________dashboard______________________
 @views.route('/dashboard', methods = ['GET', 'POST'])
 @login_required
 def dashboard():

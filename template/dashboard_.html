@@ -117,7 +117,8 @@
                             ADD
                           </button>
                         </form> -->
-                        <add_deck></add_deck>
+                        {% raw %}<add_deck user="ajay kumar"></add_deck>{%
+                        endraw %}
                       </div>
                     </div>
                   </div>
@@ -204,7 +205,7 @@
               <p>Your Decks</p>
               <hr />
             </center>
-            <div class="container" id="main_deck_cont">
+            <!-- <div class="container" id="main_deck_cont">
               <div class="row">
                 <div class="col-md-7">
                   <p>Deck name</p>
@@ -226,12 +227,12 @@
                   <i class="bi bi-trash"></i>
                 </div>
               </div>
-            </div>
+            </div> -->
+            <your_decks></your_decks>
           </div>
         </div>
       </div>
     </div>
     <script src="static/js/dashboard.js"></script>
-    <script src="static/js/sample_test.js"></script>
   </body>
 </html>

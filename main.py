@@ -4,6 +4,7 @@ from flask_restful import Api
 from application.config import LocalDevelopementConfig
 from application.db_init import db
 from os import path
+from flask_cors import CORS
 
 #-------------initialization-------------------
 # db = SQLAlchemy()
@@ -12,6 +13,7 @@ from os import path
 #---------------creating app ------------------
 def create_app():
     app = Flask(__name__, template_folder="template")
+    CORS(app)
     app.config['SECRET_KEY'] = 'ajay'
     # app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{data_base}'
     app.config.from_object(LocalDevelopementConfig)
