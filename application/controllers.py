@@ -51,7 +51,7 @@ def register():
 @login_required
 def dashboard():
     deck_info= requests.get(f'http://127.0.0.1:5000/api/deck/{current_user.username}')    
-    return render_template('dashboard.html', decks=deck_info.json(), user=current_user.username)
+    return render_template('dashboard_.html', decks=deck_info.json(), user=current_user.username)
 
 
 #______________________ reviewing page of deck__________________________
