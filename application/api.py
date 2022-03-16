@@ -61,7 +61,7 @@ class UserAPI(Resource):
 #______________deck apis_________________--
 class DeckAPI(Resource):
 
-    #________________used in dashboard for showing decks of user___________________   
+    #________________used in dashboard for showing decks of user____ /api/deck/<string:username> _______________   
     def get(self, username):
         decks = Deck.query.filter_by(user=username)
 
@@ -85,7 +85,7 @@ class DeckAPI(Resource):
         db.session.add(deck_to_add)
         db.session.commit()
         print("==========================================mmmmm")
-        # return redirect('/dashboard')
+        return redirect('/dashboard')
 
 # ================================ DELETE DECK =====================
     def delete(self, username,deck_name):

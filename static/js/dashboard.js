@@ -2,11 +2,65 @@
 const your_decks = Vue.component("your_decks", {
   data: function () {
     return {
+      deck_list: [],
+    };
+  },
+  template: `
+  <div>
+ 
+  <div class="container" id="main_deck_cont" v-for="deck in deck_list">
+              <div class="row">
+                <div class="col-md-7">
+                  <p>{{deck ['deck_name']}}</p>
+                </div>
+
+                <div class="col-md-1" id="deck_features_s">
+                  <p>{{deck['score']}}</p>
+                </div>
+                <div class="col-md-1" id="deck_features">
+                  <i class="bi bi-arrow-right-circle"></i>
+                </div>
+                <div class="col-md-1" id="deck_features">
+                  <i class="bi bi-pencil-square fa-5x"></i>
+                </div>
+                <div class="col-md-1" id="deck_features">
+                  <i class="bi bi-download"></i>
+                </div>
+                <div class="col-md-1" id="deck_features" >
+                  <i class="bi bi-trash"></i>
+                </div>
+              </div>
+            </div> 
+  </div>`,
+
+  methods: {
+    get_deck_list: function () {
+      fetch(`/api/deck/ajay kumar3`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((deck_info) => deck_info.json())
+        .then((deck_info) => this.deck_list.push(...deck_info))
+        .catch((e) => console.log(e));
+    },
+  },
+
+  mounted: function () {
+    this.get_deck_list();
+  },
+});
+
+// ==============================  analatics ============================
+const analatics = Vue.component("analatics", {
+  data: function () {
+    return {
       user: null,
     };
   },
   template: `
-  <h1>sample your deck component</h1>`,
+  <h1>sample Analatics component</h1>`,
 });
 
 // =================================== ADD DECK ===============
@@ -48,9 +102,12 @@ const add_deck = Vue.component("add_deck", {
 });
 
 // ============================== ROUTES ====================
-routes_ = [{ path: "/", component: your_decks }];
+routes = [
+  { path: "/", component: your_decks },
+  { path: "/analatics", component: analatics },
+];
 const router = new VueRouter({
-  routes_, // short for `routes: routes`
+  routes, // short for `routes: routes`
 });
 
 var app = new Vue({

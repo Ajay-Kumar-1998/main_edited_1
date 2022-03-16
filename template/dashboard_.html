@@ -66,12 +66,17 @@
               </center>
             </div>
             <div id="features " class="features_cont_acc">
-              <div class="features_item_blue">
-                <p>Your decks</p>
-              </div>
-              <div class="features_item_green">
-                <p>Analatics</p>
-              </div>
+              <router-link to="/">
+                <div class="features_item_blue">
+                  <p>Your Decks</p>
+                </div>
+              </router-link>
+
+              <router-link to="/analatics">
+                <div class="features_item_yellow">
+                  <p>Analatics</p>
+                </div>
+              </router-link>
 
               <!-- ================== accordition=============== -->
               <div
@@ -124,7 +129,7 @@
                             ADD
                           </button>
                         </form> -->
-                        {% raw %}<add_deck user="ajay kumar"></add_deck>{%
+                        {% raw %}<add_deck user="ajay kumar3"></add_deck>{%
                         endraw %}
                       </div>
                     </div>
@@ -239,7 +244,8 @@
                 </div>
               </div>
             </div> -->
-            <your_decks></your_decks>
+            <!-- <your_decks></your_decks> -->
+            <router-view></router-view>
           </div>
         </div>
       </div>
