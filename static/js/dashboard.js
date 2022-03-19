@@ -10,7 +10,7 @@ const your_decks = Vue.component("your_decks", {
  
   <div class="container" id="main_deck_cont" v-for="deck in deck_list">
               <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-7" id="deck_name_div">
                   <p>{{deck ['deck_name']}}</p>
                 </div>
 
@@ -26,7 +26,7 @@ const your_decks = Vue.component("your_decks", {
                 <div class="col-md-1" id="deck_features">
                   <i class="bi bi-download"></i>
                 </div>
-                <div class="col-md-1" id="deck_features" >
+                <div class="col-md-1" id="deck_features" v-on:click="delete_deck(deck['deck_name'])" >
                   <i class="bi bi-trash"></i>
                 </div>
               </div>
@@ -43,6 +43,15 @@ const your_decks = Vue.component("your_decks", {
       })
         .then((deck_info) => deck_info.json())
         .then((deck_info) => this.deck_list.push(...deck_info))
+        .catch((e) => console.log(e));
+    },
+
+    delete_deck: function (deck_name) {
+      fetch(`/ajay kumar3/deck/${deck_name}/delete`, {
+        method: "GET",
+      })
+        .then((resp) => resp.json())
+        .then(() => console.log("deleted deck--------------"))
         .catch((e) => console.log(e));
     },
   },

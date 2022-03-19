@@ -86,8 +86,11 @@ def score(deck,card_id):
 @views.route('/<string:user>/deck/<string:deck>/delete', methods=['GET','POST'])
 def deletedeck(deck, user):
     print("line 1------------------------")
+    print(deck)
+    print(user)
     deck_to_delete= Deck.query.filter_by(deck_name=deck, user=user).first()
     print("line 2------------------------")
+    print(deck_to_delete)
     db.session.delete(deck_to_delete)
     print("line 3------------------------")
     db.session.commit()

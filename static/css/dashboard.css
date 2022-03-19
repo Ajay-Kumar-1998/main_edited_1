@@ -187,10 +187,25 @@ a {
   padding-top: 10px;
   padding: 10px;
   margin-top: 7px;
+  margin-bottom: 5px;
+  padding-right: 40px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 5px rgb(160, 160, 160);
+  width: 45px;
+  height: 47px;
+  margin-left: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+#deck_features:hover {
+  background-color: rgb(233, 233, 233);
 }
 #main_deck_cont i {
   color: rgb(30, 0, 112);
   padding-left: 10px;
+  padding-right: 25px;
+  padding-top: 10px;
   padding-top: 10px !important;
   size: 50px 50px !important;
 }
@@ -258,4 +273,73 @@ a {
   margin-bottom: 5px;
   box-shadow: 0px 2px 4px rgba(78, 78, 78, 0.26);
   cursor: pointer;
+}
+
+/* ============================================================ */
+
+#review_deck_info {
+  /* background-color: rgb(203, 255, 255); */
+  background-image: linear-gradient(rgb(210, 252, 255), rgb(162, 247, 253));
+  margin-top: 50px;
+  width: 150px;
+  height: 200px;
+  margin-right: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+}
+#main_card {
+  position: relative;
+  background-color: rgb(192, 250, 228);
+  background-image: linear-gradient(rgb(249, 255, 218), rgb(239, 255, 160));
+  margin-top: 50px;
+  width: 350px;
+  margin-right: 15px;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+#main_card:hover {
+  transform: rotateX(180);
+}
+#review_buttons {
+  /* background-color: rgb(255, 255, 255); */
+  margin-top: 50px;
+  width: 150px;
+}
+#btn-1 {
+  background-color: rgb(234, 252, 184);
+  background-image: linear-gradient(rgb(225, 255, 218), rgb(195, 255, 160));
+  height: 63px;
+  border-top-right-radius: 15px;
+  margin-bottom: 5px;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+}
+#btn-2 {
+  background-color: rgb(248, 220, 184);
+  background-image: linear-gradient(rgb(255, 245, 218), rgb(255, 238, 160));
+  height: 64px;
+  margin-bottom: 5px;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+}
+#btn-3 {
+  background-color: rgb(255, 188, 188);
+  background-image: linear-gradient(rgb(255, 218, 218), rgb(255, 179, 160));
+  height: 64px;
+  border-bottom-right-radius: 15px;
+  box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+}
+
+#main_card_front {
+  position: absolute;
+  background-color: rgba(67, 235, 0, 0.267);
+  height: 100%;
+  width: 100%;
+}
+#main_card_back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(235, 0, 0, 0.418);
+  backface-visibility: hidden;
 }
