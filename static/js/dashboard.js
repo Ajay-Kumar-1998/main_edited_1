@@ -11,14 +11,14 @@ const your_decks = Vue.component("your_decks", {
   <div class="container" id="main_deck_cont" v-for="deck in deck_list">
               <div class="row">
                 <div class="col-md-7" id="deck_name_div">
-                  <p>{{deck ['deck_name']}}</p>
+                  <p id="deck_name" >{{deck ['deck_name']}}</p>
                 </div>
 
                 <div class="col-md-1" id="deck_features_s">
                   <p>{{deck['score']}}</p>
                 </div>
                 <div class="col-md-1" id="deck_features">
-                  <i class="bi bi-arrow-right-circle"></i>
+                  <router-link to="/review/{{ deck['deck_name'] }}"><i class="bi bi-arrow-right-circle"></i></router-link>
                 </div>
                 <div class="col-md-1" id="deck_features">
                   <i class="bi bi-pencil-square fa-5x"></i>
@@ -54,6 +54,11 @@ const your_decks = Vue.component("your_decks", {
         .then(() => console.log("deleted deck--------------"))
         .catch((e) => console.log(e));
     },
+
+    edit_deck_form: function () {
+      Document.getElementById("deck_name").innerHTML =
+        "<form><input type='text' class='form-control' placeholder='new name'><button class='btn btn-success'></form>";
+    },
   },
 
   mounted: function () {
@@ -70,6 +75,29 @@ const analatics = Vue.component("analatics", {
   },
   template: `
   <h1>sample Analatics component</h1>`,
+});
+
+// ==============================  review deck  ============================
+const review = Vue.component("review", {
+  data: function () {
+    return {
+      user: null,
+    };
+  },
+  template: `
+  <div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-2" id="review_deck_info"></div>
+  <div class="col-md-4" id="main_card"></div>
+  <div class="col-md-2" id="review_buttons">
+    <div class="row" id="btn-1"></div>
+    <div class="row" id="btn-2"></div>
+    <div class="row" id="btn-3"></div>
+  </div>
+  <div class="col-md-2"></div>
+  <h1>{{ $route.params.deck }}</h1>
+  </div>
+  `,
 });
 
 // =================================== ADD DECK ===============
@@ -114,6 +142,7 @@ const add_deck = Vue.component("add_deck", {
 routes = [
   { path: "/", component: your_decks },
   { path: "/analatics", component: analatics },
+  { path: "/review/:deck", component: review },
 ];
 const router = new VueRouter({
   routes, // short for `routes: routes`
@@ -121,7 +150,8 @@ const router = new VueRouter({
 
 var app = new Vue({
   el: "#app",
+  delimiters: ["{%", "%}"],
   router: router,
 });
 
-console.log("in js file===============================");
+console.log("in js file =============================== ");
